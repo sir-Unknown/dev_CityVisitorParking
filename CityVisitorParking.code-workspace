@@ -1,0 +1,35 @@
+{
+  "folders": [
+    {
+      "name": "🏠 ha_City-Visitor-Parking",
+      "path": "../ha_City-Visitor-Parking",
+    },
+    {
+      "name": "🐍 pyCityVisitorParking",
+      "path": "../pyCityVisitorParking",
+    },
+    {
+      "name": "🛠️ dev_CityVisitorParking",
+      "path": ".",
+    },
+    {
+      "name": "⚙️ ha_config",
+      "path": "/workspaces/config",
+    },
+  ],
+  "settings": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "files.trimTrailingWhitespace": true,
+    "[python]": {
+      "editor.defaultFormatter": "charliermarsh.ruff",
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+  },
+}

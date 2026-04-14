@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Home Assistant (pycvp: PyPI latest)",
+      "type": "debugpy",
+      "request": "launch",
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "module": "homeassistant",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": false,
+      "args": ["--debug", "-c", "/workspaces/config"]
+    },
+    {
+      "name": "Home Assistant (pycvp: local dev)",
+      "type": "debugpy",
+      "request": "launch",
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "module": "homeassistant",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": false,
+      "args": ["--debug", "-c", "/workspaces/config"],
+      "preLaunchTask": "Install pycvp (local dev editable)"
+    }
+  ]
+}

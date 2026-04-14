@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "anthropic.claude-code",
+    "charliermarsh.ruff",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "GitHub.vscode-github-actions",
+    "GitHub.vscode-pull-request-github",
+    "ms-python.pylint",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "redhat.vscode-yaml",
+    "tamasfe.even-better-toml"
+  ]
+}

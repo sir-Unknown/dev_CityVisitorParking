@@ -1,0 +1,126 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "GitHub: Login",
+      "type": "shell",
+      "command": "gh auth login --web",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Home Assistant (pycvp: PyPI latest)",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "pkill -f \"^/workspaces/ha_City-Visitor-Parking/.venv/bin/python .*-m homeassistant\" || true; sleep 2; pkill -9 -f \"^/workspaces/ha_City-Visitor-Parking/.venv/bin/python .*-m homeassistant\" || true; rm -f /workspaces/config/.ha_run.lock /workspaces/config/home-assistant.log; uv pip install --python /workspaces/ha_City-Visitor-Parking/.venv/bin/python --upgrade pycityvisitorparking; PYTHONUNBUFFERED=1 /workspaces/ha_City-Visitor-Parking/.venv/bin/python -u -m homeassistant --debug -c /workspaces/config 2>&1 | tee -a /workspaces/config/home-assistant.log"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Home Assistant (pycvp: local dev)",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "pkill -f \"^/workspaces/ha_City-Visitor-Parking/.venv/bin/python .*-m homeassistant\" || true; sleep 2; pkill -9 -f \"^/workspaces/ha_City-Visitor-Parking/.venv/bin/python .*-m homeassistant\" || true; rm -f /workspaces/config/.ha_run.lock /workspaces/config/home-assistant.log; export PYTHONPATH=/workspaces/pyCityVisitorParking/src${PYTHONPATH:+:$PYTHONPATH}; echo \"[pycvp local dev] Verifying local package import...\"; /workspaces/ha_City-Visitor-Parking/.venv/bin/python -c \"import pycityvisitorparking; print(\\\"[pycvp local dev] Using \\\" + pycityvisitorparking.__file__)\"; PYTHONUNBUFFERED=1 /workspaces/ha_City-Visitor-Parking/.venv/bin/python -u -m homeassistant --debug -c /workspaces/config 2>&1 | tee -a /workspaces/config/home-assistant.log"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: pyCityVisitorParking",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-lc", "set -euo pipefail; cd /workspaces/pyCityVisitorParking && uv run pytest"],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: ha_City-Visitor-Parking",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-lc", "set -euo pipefail; cd /workspaces/ha_City-Visitor-Parking && UV_PROJECT_ENVIRONMENT=/workspaces/ha_City-Visitor-Parking/.venv uv run pytest"],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Lint: pyCityVisitorParking",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-lc", "set -euo pipefail; cd /workspaces/pyCityVisitorParking && uv run ruff check src && uv run pylint src"],
+      "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true,
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Install pycvp (local dev editable)",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "set -euo pipefail; /workspaces/ha_City-Visitor-Parking/.venv/bin/python -m pip uninstall -y pycityvisitorparking || true; uv pip install --python /workspaces/ha_City-Visitor-Parking/.venv/bin/python --editable /workspaces/pyCityVisitorParking"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "hide": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "Verify pycvp install",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "set -euo pipefail; /workspaces/ha_City-Visitor-Parking/.venv/bin/python -m pip show pycityvisitorparking; /workspaces/ha_City-Visitor-Parking/.venv/bin/python -c \"import pycityvisitorparking; print(pycityvisitorparking.__file__)\"; /workspaces/ha_City-Visitor-Parking/.venv/bin/python -c \"import pycityvisitorparking.provider.dvsportal.api as m; print(m.__file__)\"; /workspaces/ha_City-Visitor-Parking/.venv/bin/python -c \"from pycityvisitorparking.provider.dvsportal.const import LOGIN_METHOD_PAS; print(LOGIN_METHOD_PAS)\""
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "hide": true,
+      "problemMatcher": []
+    }
+  ]
+}
