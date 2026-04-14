@@ -1,0 +1,49 @@
+{
+  "name": "CityVisitorParking development environment",
+  "image": "mcr.microsoft.com/devcontainers/python:3-3.14-trixie",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainer-community/devcontainer-features/astral.sh-uv:1": {}
+  },
+  "forwardPorts": [8123],
+  "portsAttributes": {
+    "8123": {
+      "label": "Home Assistant",
+      "onAutoForward": "openBrowserOnce"
+    }
+  },
+  "workspaceMount": "source=${localWorkspaceFolder}/..,target=/workspaces,type=bind",
+  "onCreateCommand": "bash .devcontainer/on-create.sh",
+  "updateContentCommand": "bash .devcontainer/update-content.sh",
+  "containerEnv": {
+    "DEVCONTAINER": "1",
+    "UV_LINK_MODE": "copy"
+  },
+  "remoteUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "anthropic.claude-code",
+        "charliermarsh.ruff",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "GitHub.vscode-github-actions",
+        "GitHub.vscode-pull-request-github",
+        "ms-python.pylint",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml"
+      ],
+      "settings": {
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  }
+}
