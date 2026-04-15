@@ -16,6 +16,10 @@
       "name": "⚙️ ha_config",
       "path": "/workspaces/config",
     },
+    {
+      "name": "📖 ha_City-Visitor-Parking.wiki",
+      "path": "../ha_City-Visitor-Parking.wiki",
+    },
   ],
   "settings": {
     "editor.formatOnPaste": false,

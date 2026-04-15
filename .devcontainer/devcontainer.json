@@ -34,7 +34,8 @@
         "ms-python.python",
         "ms-python.vscode-pylance",
         "redhat.vscode-yaml",
-        "tamasfe.even-better-toml"
+        "tamasfe.even-better-toml",
+        "openai.chatgpt"
       ],
       "settings": {
         "terminal.integrated.profiles.linux": {

@@ -15,7 +15,9 @@ unset VIRTUAL_ENV
 
   if [ -f /workspaces/ha_City-Visitor-Parking/custom_components/city_visitor_parking/frontend/package.json ]; then
     corepack enable
-    yarn --cwd /workspaces/ha_City-Visitor-Parking/custom_components/city_visitor_parking/frontend install
+    cd /workspaces/ha_City-Visitor-Parking/custom_components/city_visitor_parking/frontend
+    corepack yarn install
+    cd /workspaces/ha_City-Visitor-Parking
   fi
 
   uv run pre-commit install
