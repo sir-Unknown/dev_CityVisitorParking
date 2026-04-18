@@ -32,6 +32,7 @@ logger:
   default: info
   logs:
     custom_components: debug
+    pycityvisitorparking: debug
     haffmpeg.core: notset
     haffmpeg.tools: notset
     homeassistant.components.camera.img_util: notset
