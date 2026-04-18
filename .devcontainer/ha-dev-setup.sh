@@ -35,6 +35,9 @@ logger:
     haffmpeg.core: notset
     haffmpeg.tools: notset
     homeassistant.components.camera.img_util: notset
+
+city_visitor_parking:
+  demo: true
 CFGEOF
   fi
 
