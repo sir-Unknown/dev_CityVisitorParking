@@ -3,6 +3,17 @@ set -euo pipefail
 export UV_LINK_MODE="${UV_LINK_MODE:-copy}"
 unset VIRTUAL_ENV
 
+[ -d /workspaces/dev_CityVisitorParking ] && (
+  cd /workspaces/dev_CityVisitorParking
+
+  # Recreate the workspace venv when a previous setup left behind an incomplete
+  # environment without the interpreter binary that VS Code expects.
+  if [ ! -x .venv/bin/python ]; then
+    rm -rf .venv
+    uv venv .venv
+  fi
+) || true
+
 [ -f /workspaces/pyCityVisitorParking/pyproject.toml ] && (
   cd /workspaces/pyCityVisitorParking
   uv sync --group dev
